@@ -50,8 +50,21 @@ void cycle_sort(int *a, int n){
     }    
 }
 
-void selection_sort(int *arr, int l){
+void swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
 
+void selection_sort(int *a, int n){
+    for (int step = 0; step < n - 1; step++) {
+    int min_idx = step;
+    for (int i = step + 1; i < n; i++) {
+      if (a[i] < a[min_idx])
+        min_idx = i;
+    }
+    swap(&a[min_idx], &a[step]);
+  }
 }
 
 void main(){
@@ -76,10 +89,10 @@ void main(){
     
     case 2:
         selection_sort(arr,l);
+        show_arr(arr,l);
         break;
 
     default:
         break;
     }
 }
-
